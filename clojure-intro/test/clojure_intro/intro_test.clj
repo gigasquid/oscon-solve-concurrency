@@ -112,6 +112,4 @@
     (is (= #{:x :y :z :a} (fill-in-the-blank #{:x :y :z} :a))))
 
   (testing "removiing an element from a set"
-    (is (= #{:x :y} (fill-in-the-blank #{:x :y :z} :z))))
-
-)
+    (is (= #{:x :y} (fill-in-the-blank #{:x :y :z} :z)))))
