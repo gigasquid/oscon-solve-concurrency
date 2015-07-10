@@ -43,10 +43,10 @@
 
 #_(deftest anonymous-functions
   (testing "using fn for a function"
-    (is (= "woof" (fn [] "meow"))))
+    (is (= "woof" ((fn [] "meow")))))
 
   (testing "shorthand of #()"
-    (is (= "2" #(+ 1 3)))))
+    (is (= 2 (#(+ 1 3))))))
 
 #_(deftest flow-control-with-ifs
   (testing "if test is true, it returns the first expression"
@@ -79,14 +79,37 @@
 #_(deftest flow-control-with-case
   (testing "if the value matches then the expression is returned"
     (is (= :a (let [x 2]
-                (case
-                 1 :a
-                 2 :b
-                 3 :c)))))
+                (case x
+                  1 :a
+                  2 :b
+                  3 :c)))))
   (testing "default cases are last"
     (is (= :e (let [x 2]
-                (case
-                 1 :a
-                 2 :b
-                 3 :c
-                 :e))))))
+                (case x
+                  1 :a
+                  2 :b
+                  3 :c
+                  :e))))))
+
+
+(defn happy-number [x]
+  (str x ":)"))
+
+#_(deftest map-the-ultimate
+   (testing "map takes a function and applies it to every element of the collection"
+     (is (= ["1" "2" "3"] (map str [1 2 3 4]))))
+   (testing "it can use anonymous functions"
+     (is (= ["1!" "2!" "3!"] (map (fn [x] (str x "!")) [1 2 3 4]))))
+   (testing "it can use functions defined somewhere else"
+     (is (= ["1:)" "2:)" "3:)"] (map happy-number [1 2 3 4])))))
+
+(defn happy-reduce [r x]
+  (str r ":)" x))
+
+#_(deftest reduce-the-ultimate
+  (testing "reduce takes a function of two arguments and applies it to each element.  The first arg of the function in the ongoning result"
+    (is (= 5 (reduce + [1 2 3]))))
+  (testing "it can us anonymous functions"
+    (is (= "123" (reduce (fn [r x] (str r x)) [1 2 3 4]))))
+  (testing "it can use functions defined somewhere else"
+    (is (= "1:)2:)3" (reduce happy-reduce [1 2 3 4])))))
