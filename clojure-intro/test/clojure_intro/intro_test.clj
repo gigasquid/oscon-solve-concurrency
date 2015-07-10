@@ -7,6 +7,12 @@
 ;; to use
 (defn fill-in-the-blank [& args] "fill me in with the right function")
 
+;; Instructions: fix the numbers to make these test pass.  When you
+;; are done, remove the #_ in front of the next deftest to start
+;; running those.  The #_ tells clojure to ignore the expression.
+;; This is useful so we don't look at so many failures when running
+;; the tests
+
 (deftest basic-expressions
   (testing "addition"
     (is (= 5 (+ 1 8)))
@@ -25,10 +31,12 @@
     (is (= 2 (/ 10 (+ 1 3))))))
 
 
+;; Don't forget to remove the #_ to make the tests run
+
 ;;; Replace the fill-in-the-blank function with the right collection
 ;;; function - (first, rest,last, or conj)
 
-(deftest all-about-lists
+#_(deftest all-about-lists
   (testing "getting the first element"
     (is (= :a (fill-in-the-blank '(:a :b :c :d)))))
 
@@ -46,7 +54,7 @@
 ;;; Replace the fill-in-the-blank function with the right collection
 ;;; function - (first, rest,last, conj, or nth)
 
-(deftest all-about-vectors
+#_(deftest all-about-vectors
   (testing "getting the first element"
     (is (= :a (fill-in-the-blank [:a :b :c :d]))))
 
@@ -66,7 +74,7 @@
 ;;; Replace the fill-in-the-blank function with the right collection
 ;;; function - it be: get, or a keyword, assoc, dissoc
 
-(deftest all-about-maps
+#_(deftest all-about-maps
   (testing "getting the value from a map with get"
     (is (= "green" (fill-in-the-blank {:a "blue" :b "red" :c "green"} :c))))
 
@@ -90,7 +98,7 @@
 ;;; function - it be: get, or a keyword, clojure.set/intersection,
 ;;; conj or disj
 
-(deftest all-about-sets
+#_(deftest all-about-sets
   (testing "getting the value from a set with get"
     (is (= :x (fill-in-the-blank #{:x :y :z}))))
 
