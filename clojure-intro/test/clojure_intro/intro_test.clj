@@ -1,6 +1,7 @@
 (ns clojure-intro.intro-test
   (:require [clojure.test :refer :all]
-            [clojure-intro.intro :refer :all]))
+            [clojure-intro.intro :refer :all]
+            [clojure.set :as set]))
 
 
 ;; this is a helper function that is a stand-in for the right function
@@ -98,7 +99,7 @@
     (is (= :y (:y #{:x :y :z}))))
 
   (testing "getting the intersection from two sets"
-    (is (= #{:z} (clojure.set/intersection #{:x :y :z} #{:a :b :z}))))
+    (is (= #{:z} (set/intersection #{:x :y :z} #{:a :b :z}))))
 
   (testing "adding an element to a set"
     (is (= #{:x :y :z :a} (conj #{:x :y :z} :a))))
