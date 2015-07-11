@@ -1,6 +1,7 @@
 (ns clojure-intro.intro-test
   (:require [clojure.test :refer :all]
-            [clojure-intro.intro :refer :all]))
+            [clojure-intro.intro :refer :all]
+            [clojure.set :as set]))
 
 
 ;; this is a helper function that is a stand-in for the right function
@@ -95,7 +96,7 @@
 
 
 ;;; Replace the fill-in-the-blank function with the right collection
-;;; function - it be: get, or a keyword, clojure.set/intersection,
+;;; function - it be: get, or a keyword, set/intersection,
 ;;; conj or disj
 
 #_(deftest all-about-sets
