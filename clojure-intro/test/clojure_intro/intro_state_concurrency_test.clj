@@ -40,7 +40,7 @@
     (is (= 10 @salad-servings))
     (is (= 3 @cucumbers)))
 
-  (testing"setting a ref to a new value in a transaction"
+  (testing "setting a ref to a new value in a transaction"
     (dosync (ref-set salad-servings 15)
             (ref-set cucumbers 4))
     (is (= 15 @salad-servings))
