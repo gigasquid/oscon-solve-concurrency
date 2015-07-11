@@ -36,7 +36,7 @@
   (testing "dereferecing a ref"
     (is (= 11 @salad-servings))
     (is (= 2 @cucumbers)))
-  (testing"setting a ref to a new value in a transaction"
+  (testing "setting a ref to a new value in a transaction"
     (dosync (fill-in-the-blank salad-servings 15)
             (fill-in-the-blank cucumbers 4))
     (is (= 12 @salad-servings))
