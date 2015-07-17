@@ -67,3 +67,19 @@
   (testing "sending an action to an agent"
     (send cookie-agent eat-cookie :iced)
     (is (= [:chocolate-chip :iced]))))
+
+(deftest all-about-pmap
+  (testing "pmap is just like map but parallel"
+    (is (= [5 6 7 8] (pmap dec [6 7 8 9])))))
+
+(deftest all-about-promises
+  (testing "using deliver for promises"
+    (def cake-promise (promise))
+    (deliver cake-promise "cake")
+    (is (= "cake" @cake-promise))))
+
+(deftest all-about-delays
+  (testing "delays only eval when dereffed than cache after that"
+    (def cake-delay (delay (println "I like cake.") "cake"))
+    (is (= "cake" @cake-delay))
+    (is (= "cake" @cake-delay))))
