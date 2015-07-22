@@ -56,7 +56,7 @@
     (is (= 6 @cucumbers))))
 
 (defn eat-cookie [state cookie]
-  (assoc state cookie))
+  (conj state cookie))
 
 (deftest all-about-agents
   (def cookie-agent (agent [:chocolate-chip]))
@@ -66,7 +66,8 @@
 
   (testing "sending an action to an agent"
     (send cookie-agent eat-cookie :iced)
-    (is (= [:chocolate-chip :iced]))))
+    (Thread/sleep 500)
+    (is (= [:chocolate-chip :iced] @cookie-agent))))
 
 (deftest all-about-pmap
   (testing "pmap is just like map but parallel"
