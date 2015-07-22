@@ -52,7 +52,7 @@
 
 
 (defn eat-cookie [state cookie]
-  (assoc state cookie))
+  (conj state cookie))
 
 #_(deftest all-about-agents
   (def cookie-agent (agent [:chocolate-chip]))
@@ -60,6 +60,7 @@
     (is (= [:butter] @cookie-agent)))
   (testing "sending an action to an agent"
     (send cookie-agent eat-cookie :iced)
+    (Thread/sleep 1000)
     (is (= [:chocolate-chip :iced-cookie]))))
 
 #_(deftest all-about-pmap
